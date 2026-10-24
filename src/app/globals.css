@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Palette: a blend Sarmad chose. Georgia's logo leads: sky blue #1dc1f1 (the truck and the logo's
+   field), navy #142c44 (lettering and line drawing), antique gold #c0a865 (the Greek-key ring and
+   laurel), olive #7c7c4c (the olive branches) and white. The brief's terracotta is a small warm accent.
+   Sky, gold and olive are fills only; text uses navy, the deeper aegean shade of the sky (6.2:1 with
+   white), olive-ink, gold-ink or terracotta-ink, all 4.5:1 or better on their backgrounds. */
+@theme {
+  --color-marble: #fbfaf6;
+  --color-sky: #1dc1f1;
+  --color-sky-soft: #e3f5fc;
+  --color-aegean: #0b6890;
+  --color-aegean-dark: #08506f;
+  --color-navy: #142c44;
+  --color-navy-deep: #0c1d2e;
+  --color-slate: #4a5a6e;
+  --color-gold: #c0a865;
+  --color-gold-light: #d6c38c;
+  --color-gold-ink: #7a6326;
+  --color-olive: #7c7c4c;
+  --color-olive-soft: #efefe2;
+  --color-olive-ink: #5c5c30;
+  --color-terracotta: #b5532f;
+  --color-terracotta-dark: #96421f;
+  --color-terracotta-soft: #f8e9e1;
+  --color-terracotta-ink: #a94c2a;
+}
+
+/* `inline` so utilities reference the next/font variables directly rather than resolving them on :root. */
+@theme inline {
+  --font-display: var(--font-cinzel), "Trajan Pro", Georgia, serif;
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-marble);
+  color: var(--color-navy);
+}
+
+/* The Greek key (meander) from the ring on Georgia's logo: one SVG tile used as a mask, so the band
+   takes its color from `color` (text-gold, text-navy...). */
+.greek-key {
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M0 22H24M2 22V2H20V16H8V8H14V12' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E") repeat-x left center / 18px 18px;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M0 22H24M2 22V2H20V16H8V8H14V12' fill='none' stroke='%23000' stroke-width='2.4'/%3E%3C/svg%3E") repeat-x left center / 18px 18px;
+}
+
+.lift {
+  box-shadow:
+    0 1px 2px rgb(20 44 68 / 0.06),
+    0 18px 40px -18px rgb(20 44 68 / 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
